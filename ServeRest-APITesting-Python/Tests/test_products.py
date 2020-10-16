@@ -3,7 +3,7 @@ import requests
 import json
 import pytest
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "https://api.serverest.dev"
 
 
 class Products(unittest.TestCase):
@@ -101,3 +101,25 @@ class Products(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200, "Error in status code to delete a product")
 
+    def test_delete_unknown_product(self):
+        product_id = "12345678"
+        full_url_del = BASE_URL + "/produtos/" + product_id
+
+        header = {"Authorization": self.token}
+
+        response = requests.delete(url=full_url_del, headers=header)
+        self.assertEqual(response.status_code, 200)
+
+        response_json = json.loads(response.text)
+        self.assertEqual(response_json["message"], "Nenhum registro excluído")
+
+    def test_delete_product_without_authentication(self):
+        product_id = "12345678"
+        full_url_del = BASE_URL + "/produtos/" + product_id
+
+        response = requests.delete(url=full_url_del)
+        self.assertEqual(response.status_code, 401)
+
+        response_json = json.loads(response.text)
+        self.assertEqual(response_json["message"], "Token de acesso ausente, inválido, "
+                                                   "expirado ou usuário do token não existe mais")
