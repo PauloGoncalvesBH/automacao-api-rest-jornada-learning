@@ -2,7 +2,7 @@ import unittest
 import requests
 import json
 
-BASE_URL = "http://localhost:3000"
+BASE_URL = "https://api.serverest.dev"
 
 
 class Users(unittest.TestCase):
@@ -77,3 +77,18 @@ class Users(unittest.TestCase):
         response = requests.delete(url=full_url_del)
 
         self.assertEqual(response.status_code, 200, "Error in status code to delete a user")
+
+    def test_find_unknown_user(self):
+        full_url = BASE_URL + "/usuarios"
+        query= {"_id": "123"}
+
+        # Send HTTP Request
+        response = requests.get(url=full_url, params=query)
+
+        # Check the response from ServeRest
+        self.assertEqual(response.status_code, 200)
+
+        response_json = json.loads(response.text)
+        self.assertEqual(response_json["quantidade"], 0, "Quantidade invalida de items para usuario "
+                                                         "nao cadastrado")
+
