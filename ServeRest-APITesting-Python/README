@@ -1,0 +1,17 @@
+## Note: It is a good practice to create a virtual env, before of install requirements
+## You can use Pycharm as IDE, the following link has a good help:
+https://www.jetbrains.com/help/idea/creating-virtual-environment.html
+
+## To install packages that are necessary ##
+> pip install -r requirements.txt
+
+## To run all tests ##
+> cd Tests
+> pytest
+
+## To run a specific test suite ##
+> cd Tests
+> pytest test_users.py
+
+
+
