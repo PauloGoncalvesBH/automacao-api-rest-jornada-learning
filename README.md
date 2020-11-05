@@ -3,7 +3,7 @@
 Repositório do workshop de automação de API REST da [Jornada Learning](https://jornadalearning.com.br/)
 
 
-[💻 Slides](https://www.canva.com/design/DAEKtr5rIfg/bgX5KsWr1y8XD8h34l1x7A/view?utm_content=DAEKtr5rIfg&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
+[💻 Slides](./Automação%20de%20API%20Rest.pdf)
 
 ## Pré-requisitos para o workshop
 
